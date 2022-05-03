@@ -1,0 +1,6 @@
+<launch>
+  <node name="zzx_run_robot_teleop" pkg="zzx_run_teleop" type="zzx_run_robot_teleop.py" output="screen">
+    <param name="scale_linear" value="1.0" type="double"/>
+    <param name="scale_angular" value="1.0" type="double"/>
+  </node>
+</launch>

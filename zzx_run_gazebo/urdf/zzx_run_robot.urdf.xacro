@@ -1,0 +1,882 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This xacro was created by ZZX-->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" 
+    xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+    xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+    xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+    name="zzx_run_robot">
+
+<!--base_link-->
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.00741047992278929 -0.00341114189657439 0.114186284669122"
+        rpy="0 0 0" />
+      <mass
+        value="3.96236436148786" />
+      <inertia
+        ixx="0.178506185725259"
+        ixy="0.000108304306880873"
+        ixz="0.000169549055394087"
+        iyy="0.404759631587269"
+        iyz="1.00448230235288E-06"
+        izz="0.561130623679876" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+<!--base_footprint-->
+   <link name="base_footprint">
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <box size="0.001 0.001 0.001" />
+                </geometry>
+            </visual>
+  </link>
+
+  <joint name="base_footprint_joint" type="fixed">
+            <origin xyz="0 0 0.06746" rpy="0 0 0" />
+            <parent link="base_footprint"/>
+            <child link="base_link" />
+  </joint>
+
+
+
+<!--left_front_wheel_link-->
+  <link
+    name="left_front_wheel_link">
+    <inertial>
+      <origin
+        xyz="-4.78387528979329E-07 0.0527999229567212 -1.21519264034697E-06"
+        rpy="0 0 0" />
+      <mass
+        value="5.58816289074736" />
+      <inertia
+        ixx="0.0467264175417539"
+        ixy="4.21922638423182E-10"
+        ixz="4.31360254637763E-10"
+        iyy="0.0872654610518181"
+        iyz="5.11812738578019E-11"
+        izz="0.0467264187453853" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/left_front_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.83921568627451 0.83921568627451 0.92156862745098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/left_front_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!--left_front_wheel_link_joint-->
+  <joint
+    name="left_front_wheel_link_joint"
+    type="continuous">
+    <origin
+      xyz="0.390000000000006 0.309999999999989 0.0849999999999932"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_front_wheel_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+
+  <!--left_behind_wheel_link-->
+  <link
+    name="left_behind_wheel_link">
+    <inertial>
+      <origin
+        xyz="1.31378196099874E-07 0.0527999220844182 -1.30022679351027E-06"
+        rpy="0 0 0" />
+      <mass
+        value="5.58816261475792" />
+      <inertia
+        ixx="0.0467264178495617"
+        ixy="-1.48432408253074E-10"
+        ixz="3.45934344448938E-11"
+        iyy="0.0872654610290871"
+        iyz="5.288073487882E-10"
+        izz="0.0467264184119642" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/left_behind_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.83921568627451 0.83921568627451 0.92156862745098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/left_behind_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <!--left_behind_wheel_link_joint-->
+  <joint
+    name="left_behind_wheel_link_joint"
+    type="continuous">
+    <origin
+      xyz="-0.389999999999994 0.31 0.0850000000000068"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_behind_wheel_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+
+  <!--right_front_wheel_link-->
+  <link
+    name="right_front_wheel_link">
+    <inertial>
+      <origin
+        xyz="1.23487383696386E-06 -0.052800077037773 4.18657537137879E-07"
+        rpy="0 0 0" />
+      <mass
+        value="5.58816289283226" />
+      <inertia
+        ixx="0.0467264183997509"
+        ixy="-4.77846900738126E-10"
+        ixz="9.0196657416584E-11"
+        iyy="0.0872654610291803"
+        iyz="-2.63885619866361E-10"
+        izz="0.0467264178624116" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/right_front_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.83921568627451 0.83921568627451 0.92156862745098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/right_front_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <!--right_front_wheel_link_joint-->
+  <joint
+    name="right_front_wheel_link_joint"
+    type="continuous">
+    <origin
+      xyz="0.389999999999997 -0.309999999999999 0.0849999999999932"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_front_wheel_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+
+  <!--right_behind_wheel_link-->
+  <link
+    name="right_behind_wheel_link">
+    <inertial>
+      <origin
+        xyz="-1.17487549072814E-06 -0.0528000779026511 5.64813343303938E-07"
+        rpy="0 0 0" />
+      <mass
+        value="5.58816261843466" />
+      <inertia
+        ixx="0.0467264186791865"
+        ixy="2.30502475654598E-11"
+        ixz="-5.12433901318596E-10"
+        iyy="0.0872654610531356"
+        iyz="-4.26967668323502E-10"
+        izz="0.0467264176094793" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/right_behind_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.83921568627451 0.83921568627451 0.92156862745098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/right_behind_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <!--right_behind_wheel_link_joint-->
+  <joint
+    name="right_behind_wheel_link_joint"
+    type="continuous">
+    <origin
+      xyz="-0.390000000000003 -0.309999999999988 0.0850000000000068"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_behind_wheel_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+
+  <!--camera_link-->
+  <link
+    name="camera_link">
+    <inertial>
+      <origin
+        xyz="-0.0168162954023792 0.00256898920993011 -0.000512016798250026"
+        rpy="0 0 0" />
+      <mass
+        value="0.146986742470214" />
+      <inertia
+        ixx="0.000382731548245758"
+        ixy="4.93963664924208E-07"
+        ixz="-2.21084683413792E-07"
+        iyy="2.18219626833256E-05"
+        iyz="1.36591231466188E-08"
+        izz="0.00039064219791682" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/camera_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/camera_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <!--camera_link_joint-->
+  <joint
+    name="camera_link_joint"
+    type="fixed">
+    <origin
+      xyz="0.386266044151218 -0.124376808120098 0.277447441433298"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="camera_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+<!--camera_frame_optical-->
+  <link name="camera_frame_optical"/>
+  <joint name="camera_optical_joint" type="fixed">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <parent link="camera_link"/>
+            <child link="camera_frame_optical"/>
+  </joint>
+
+
+<!--lidar_link-->
+  <link
+    name="lidar_link">
+    <inertial>
+      <origin
+        xyz="-0.000294907920402432 -2.58127452130996E-06 0.0357873616759956"
+        rpy="0 0 0" />
+      <mass
+        value="0.584837208798273" />
+      <inertia
+        ixx="0.000628734791137339"
+        ixy="1.12598116749922E-10"
+        ixz="6.85180097758129E-08"
+        iyy="0.000630029723696654"
+        iyz="-5.00698245263915E-08"
+        izz="0.000749153306350983" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 -0.04"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/lidar_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/lidar_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <!--lidar_link_joint-->
+  <joint
+    name="lidar_link_joint"
+    type="fixed">
+    <origin
+      xyz="0.365857864376286 -0.120857864376271 0.396652891956056"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="lidar_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+
+  <!--senor-->
+  <link
+    name="sensor_front_left_link">
+    <inertial>
+      <origin
+        xyz="0.000750000000000028 0 3.09553724072015E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.00132898274514749" />
+      <inertia
+        ixx="2.65815808309703E-07"
+        ixy="-3.24870024445377E-21"
+        ixz="-7.30857667981816E-22"
+        iyy="4.3932216790417E-08"
+        iyz="2.51382133997089E-23"
+        izz="2.22381960048716E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/sensor_front_left_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.00784313725490196 0.501960784313725 0.823529411764706 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/sensor_front_left_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <!--sensor_joint-->
+  <joint
+    name="sensor_front_left_link_joint"
+    type="fixed">
+    <origin
+      xyz="0.496500000000005 0.251999999999993 0.0812075922005525"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="sensor_front_left_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+
+  <!--senor-->
+  <link
+    name="sensor_front_right_link">
+    <inertial>
+      <origin
+        xyz="-0.00109177850153874 -7.49896209573109E-08 -2.31929230855993E-05"
+        rpy="0 0 0" />
+      <mass
+        value="7.00274812620844E-05" />
+      <inertia
+        ixx="6.82924437603274E-10"
+        ixy="2.65325849768784E-15"
+        ixz="-1.17242461319838E-12"
+        iyy="1.19817207558257E-10"
+        iyz="5.21250136782328E-15"
+        izz="5.98449941960741E-10" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/sensor_front_right_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.666666666666667 0.698039215686274 0.768627450980392 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/sensor_front_right_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <!--sensor_joint-->
+  <joint
+    name="sensor_front_right_link_joint"
+    type="fixed">
+    <origin
+      xyz="0.496503236661323 -0.252916659440427 0.081388179281911"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="sensor_front_right_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+
+  <!--senor-->
+  <link
+    name="sensor_behind_left_link">
+    <inertial>
+      <origin
+        xyz="-0.000750000000000028 5.55111512312578E-17 3.09553724072015E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.00132898274514748" />
+      <inertia
+        ixx="2.65815808309701E-07"
+        ixy="-3.19304338349288E-21"
+        ixz="-7.5601583612258E-22"
+        iyy="4.39322167904166E-08"
+        iyz="-3.65599011246738E-22"
+        izz="2.22381960048715E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/sensor_behind_left_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.00784313725490196 0.501960784313725 0.823529411764706 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/sensor_behind_left_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <!--sensor_joint-->
+  <joint
+    name="sensor_behind_left_link_joint"
+    type="fixed">
+    <origin
+      xyz="-0.496499999999995 0.253000000000007 0.0812075922005699"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="sensor_behind_left_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+
+
+    <!--senor-->
+  <link
+    name="sensor_behind_right_link">
+    <inertial>
+      <origin
+        xyz="-0.000750000000000028 0 3.09553724072292E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.00132898274514749" />
+      <inertia
+        ixx="2.65815808309703E-07"
+        ixy="-3.01916904385809E-21"
+        ixz="-8.29243934464277E-22"
+        iyy="4.39322167904169E-08"
+        iyz="-1.53436981481006E-22"
+        izz="2.22381960048716E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/sensor_behind_right_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.00784313725490196 0.501960784313725 0.823529411764706 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/sensor_behind_right_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+
+  <!--sensor_joint-->
+  <joint
+    name="sensor_behind_right_link_joint"
+    type="fixed">
+    <origin
+      xyz="-0.496500000000002 -0.252999999999993 0.0812075922005699"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="sensor_behind_right_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+
+    <!--senor-->
+  <link
+    name="sensor_left_link">
+    <inertial>
+      <origin
+        xyz="-5.20417042793042E-18 0.000749999999999973 3.09553724072292E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.00132898274514749" />
+      <inertia
+        ixx="4.39322167904169E-08"
+        ixy="3.25536946488268E-21"
+        ixz="3.07236956960054E-21"
+        iyy="2.65815808309703E-07"
+        iyz="1.1614249076827E-24"
+        izz="2.22381960048716E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/sensor_left_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.00784313725490196 0.501960784313725 0.823529411764706 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/sensor_left_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <!--sensor_joint-->
+  <joint
+    name="sensor_left_link_joint"
+    type="fixed">
+    <origin
+      xyz="-0.0109999999999945 0.2965 0.0798244648313157"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="sensor_left_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+
+    <!--senor-->
+  <link
+    name="sensor_right_link">
+    <inertial>
+      <origin
+        xyz="1.73472347597681E-18 -0.000750000000000028 3.09553724072154E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.00132898274514748" />
+      <inertia
+        ixx="4.39322167904168E-08"
+        ixy="3.2596193594168E-21"
+        ixz="3.15270186615642E-21"
+        iyy="2.65815808309702E-07"
+        iyz="3.06525351744164E-24"
+        izz="2.22381960048716E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/sensor_right_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.00784313725490196 0.501960784313725 0.823529411764706 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://zzx_run_description/meshes/sensor_right_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+
+  <!--sensor_joint-->
+  <joint
+    name="sensor_right_link_joint"
+    type="fixed">
+    <origin
+      xyz="-0.0120000000000028 -0.2965 0.0798244648313158"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="sensor_right_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+
+<!--lidar_link-->
+        <gazebo reference="lidar_link">
+            <sensor type="ray" name="rplidar">
+                <pose>0 0 0 0 0 0</pose>
+                <visualize>false</visualize>
+                <update_rate>5.5</update_rate>
+                <ray>
+                    <scan>
+                      <horizontal>
+                        <samples>360</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-3</min_angle>
+                        <max_angle>3</max_angle>
+                      </horizontal>
+                    </scan>
+                    <range>
+                      <min>0.10</min>
+                      <max>6.0</max>
+                      <resolution>0.01</resolution>
+                    </range>
+                    <noise>
+                      <type>gaussian</type>
+                      <mean>0.0</mean>
+                      <stddev>0.01</stddev>
+                    </noise>
+                </ray>
+                <plugin name="gazebo_rplidar" filename="libgazebo_ros_laser.so">
+                    <topicName>/scan</topicName>
+                    <frameName>lidar_link</frameName>
+                </plugin>
+            </sensor>
+        </gazebo>
+
+
+<!-- Drive controller -->
+<gazebo>
+  <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+    <updateRate>100.0</updateRate>
+    <robotNamespace></robotNamespace>
+    <leftFrontJoint>left_front_wheel_link_joint</leftFrontJoint>
+    <rightFrontJoint>right_front_wheel_link_joint</rightFrontJoint>
+    <leftRearJoint>left_behind_wheel_link_joint</leftRearJoint>
+    <rightRearJoint>right_behind_wheel_link_joint</rightRearJoint>
+    <wheelSeparation>0.64</wheelSeparation>
+    <wheelDiameter>0.33</wheelDiameter>
+    <commandTopic>cmd_vel</commandTopic>
+    <odometryTopic>odom</odometryTopic>
+    <robotBaseFrame>base_footprint</robotBaseFrame>
+    <odometryFrame>odom</odometryFrame>
+    <torque>1000</torque>
+    <topicName>cmd_vel</topicName>
+    <broadcastTF>1</broadcastTF>
+  </plugin>
+</gazebo>
+
+
+<!-- ros_control plugin -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/zzx_run_robot</robotNamespace>
+      <legacyModeNS>true</legacyModeNS>
+    </plugin>
+  </gazebo>
+
+<!--friction-->
+ <gazebo reference="left_front_wheel_link">
+		    <mu1>10000</mu1>
+		    <mu2>10000</mu2>
+		    <kp>10000000</kp>
+		    <kd>1</kd>
+	</gazebo>
+
+  <gazebo reference="left_behind_wheel_link">
+
+		    <mu1>10000</mu1>
+		    <mu2>10000</mu2>
+		    <kp>10000000</kp>
+		    <kd>1</kd>
+	</gazebo>
+
+  <gazebo reference="right_front_wheel_link">
+		    <mu1>10000</mu1>
+		    <mu2>10000</mu2>
+		    <kp>10000000</kp>
+		    <kd>1</kd>
+	</gazebo>
+
+  <gazebo reference="right_behind_wheel_link">
+		    <mu1>10000</mu1>
+		    <mu2>10000</mu2>
+		    <kp>10000000</kp>
+		    <kd>1</kd>
+	</gazebo>
+
+
+</robot>

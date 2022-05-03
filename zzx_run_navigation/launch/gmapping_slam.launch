@@ -1,0 +1,8 @@
+<launch>
+
+    <include file="$(find zzx_run_navigation)/launch/gmapping_param.launch"/>
+
+    <!-- 启动rviz -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find zzx_run_navigation)/rviz/gmapping.rviz"/>
+
+</launch>
